@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		li {
+			display: inline-block;
+			background-color: red;
+			color: white;
+			padding-left: 8px;
+			padding-right: 8px;
+			height: 30px;
+			margin-right: 10px;
+			text-align: center;
+			line-height: 30px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+<input id="input"></input>
+<button id="leftIn">左插入</button>
+<button id="rightIn">右插入</button>
+<button id="leftOut">左移除</button>
+<button id="rightOut">右移除</button>
+<div class="box">
+		<ul id="ul"></ul>
+</div>
+<script type="text/javascript">
+	var sInput=document.getElementById('input');
+	var sLeftin=document.getElementById('leftIn');
+	var sRightin=document.getElementById('rightIn');
+	var sLeftout=document.getElementById('leftOut');
+	var sRightout=document.getElementById('rightOut');
+	var ul=document.getElementById('ul');
+	sLeftin.onclick=function(){
+		if (sInput.value.length==0) {
+			alert('请输入内容');
+			return false;
+		}
+		else if(isNaN(sInput.value)){
+			alert('请输入数字');
+			return false;
+		}
+		var oli= document.createElement('li');
+		oli.innerHTML=sInput.value;
+		ul.insertBefore(oli,ul.firstChild);
+		sInput.value=null;
+	}		
+	sRightin.onclick=function(){
+		if (sInput.value.length==0) {
+			alert('请输入内容');
+			return false;
+		}
+		else if(isNaN(sInput.value)){
+			alert('请输入数字');
+			return false;
+		}
+		var oli= document.createElement('li');
+		oli.innerHTML=sInput.value;
+		ul.appendChild(oli);
+		sInput.value=null;
+	}
+	sLeftout.onclick=function(){
+		alert(ul.firstChild.innerHTML);
+		ul.removeChild(ul.firstChild);
+	}
+	sRightout.onclick=function(){
+		alert(ul.lastChild.innerHTML);
+		ul.removeChild(ul.lastChild);
+	}
+	ul.onmouseover=function(){
+		var li=document.getElementsByTagName('li');
+		for (var i = 0; i < li.length; i++) {
+			li[i].index = i;
+			li[i].onclick=function(){
+				ul.removeChild(ul.childNodes[this.index]);
+			}
+		}
+	}
+</script>
+</body>
+</html>
