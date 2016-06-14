@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>任务十九</title>
+	<style>
+		dl{
+			display: inline-block;
+			width: 10px;
+			background-color: blue;
+			margin:2px;
+		}
+	</style>
+</head>
+<body>
+<input id="input"></input>
+<button id="leftIn">左插入</button>
+<button id="rightIn">右插入</button>
+<button id="leftOut">左移除</button>
+<button id="rightOut">右移除</button>
+<div id="box">
+		
+</div>
+<script type="text/javascript">
+	var sInput=document.getElementById('input');
+	var sLeftin=document.getElementById('leftIn');
+	var sRightin=document.getElementById('rightIn');
+	var sLeftout=document.getElementById('leftOut');
+	var sRightout=document.getElementById('rightOut');
+	var sdiv=document.getElementById('box');
+	sLeftin.onclick=function(){
+		if (sInput.value.length==0) {
+			alert('请输入内容');
+			return false;
+		}
+		else if(isNaN(sInput.value)){
+			alert('请输入数字');
+			sInput.value=null;
+			return false;
+		}
+		else if(sInput.value<10||sInput.value>100){
+			alert('请输入10-100之间的数字');
+			sInput.value=null;
+			return false;
+		}
+		var odl= document.createElement('dl');
+		odl.style.height=sInput.value+'px';
+		sdiv.insertBefore(odl,sdiv.firstChild);
+		sInput.value=null;
+		if (sdiv.childNodes.length>=60) {
+			alert('队列元素数量最多为60个');
+			sInput.value=null;
+			return false;
+		}
+	}		
+	sRightin.onclick=function(){
+		if (sInput.value.length==0) {
+			alert('请输入内容');
+			return false;
+		}
+		else if(isNaN(sInput.value)){
+			alert('请输入数字');
+			sInput.value=null;
+			return false;
+		}
+		else if(sInput.value<10||sInput.value>100){
+			alert('请输入10-100之间的数字');
+			sInput.value=null;
+			return false;
+		}
+		var odl= document.createElement('dl');
+		odl.style.height=sInput.value+'px';
+		sdiv.insertBefore(odl,sdiv.lastChild);
+		sInput.value=null;
+		if (sdiv.childNodes.length>=60) {
+			alert('队列元素数量最多限制为60个');
+			sInput.value=null;
+			return false;
+		}
+	}
+
+	sLeftout.onclick=function(){
+		//alert(sdiv.firstChild.innerHTML);
+		sdiv.removeChild(sdiv.firstChild);
+	}
+	sRightout.onclick=function(){
+		//alert(sdiv.lastChild.innerHTML);
+		sdiv.removeChild(sdiv.lastChild);
+	}
+	sdiv.onmouseover=function(){
+		var li=document.getElementsByTagName('li');
+		for (var i = 0; i < li.length; i++) {
+			li[i].index = i;
+			li[i].onclick=function(){
+				ul.removeChild(ul.childNodes[this.index]);
+			}
+		}
+	}
+</script>
+</body>
+</html>
