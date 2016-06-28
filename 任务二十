@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>任务20</title>
+	<style type="text/css">
+	ul{
+		background-color: pink;
+		display: inline;
+		color: white;
+		padding-left: 8px;
+		padding-right: 8px;
+		height: 30px;
+		margin-right: 10px;
+		text-align: center;
+		line-height: 30px;
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+<textarea id="input"></textarea>
+<button id="charu">插入</button>
+<button id="search">查询</button>
+<input id="chaxun"></input>
+<div id="wrap"></div>
+<script type="text/javascript">
+	var inp=document.getElementById('input');
+	var charu=document.getElementById('charu');
+	var search=document.getElementById('search');
+	var wrap=document.getElementById('wrap');
+	var chaxun=document.getElementById('chaxun');
+	var splitReg =/,|，| |、|\r|\s|\t|\u3000/;//分割特殊符号用的正则
+	charu.addEventListener('click',function(){
+		var arr=inp.value.split(splitReg);
+		for(var i=0;i<arr.length;i++){
+			if (arr[i]!==0) {
+				var oul=document.createElement('ul');
+				oul.innerHTML=arr[i];
+				wrap.appendChild(oul);}
+		}
+	},false);
+	search.addEventListener('click',function(){
+		for (var i = 0; i < wrap.children.length; i++) {
+			if(wrap.children[i].innerHTML.match(chaxun.value)){
+				wrap.children[i].style='background-color:blue';
+			}	
+		}		
+	},false);
+</script>
+</body>
+</html>
