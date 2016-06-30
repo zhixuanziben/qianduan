@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>任务三</title>
+	<style type="text/css">
+	#wrap{
+		background-color: #eee;
+		padding: 20px;
+		border: 1px solid #999;
+		overflow: auto;
+		height: 100%;
+		}
+	#left{
+		width: 160px;
+		padding: 20px;
+		border: 1px solid red;
+		float: left;
+		background-color: white;
+	}
+	#min{
+		margin-right: 140px;
+		margin-left: 220px;
+		border: 1px solid black;
+		background-color: white;
+	}
+	#right{
+		width: 120px;
+		float: right;
+		border: 1px solid red;
+		background-color: white;
+		text-align: center;
+	}
+	.leftsrc{
+		padding: 20px;
+		float: left;
+	}
+	.leftP{
+		margin-top: 20px;
+	}
+	.rigsrc{
+		padding: 5px;
+	}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="left">
+		<img src="QQ图片20160629161016.png" class="leftsrc">
+		<div class="leftP">智轩资本的战队</div>
+	</div>
+	<div id="right">
+		<img src="QQ图片20160629161016.png" class="rigsrc">
+		<img src="QQ图片20160629161016.png" class="rigsrc">
+		<img src="QQ图片20160629161016.png" class="rigsrc">
+		<img src="QQ图片20160629161016.png" class="rigsrc">
+	</div>
+	<div id="min">
+		<h2>智轩资本战队</h2>
+        <h3>团队介绍</h3>
+        <p>
+            我是来自河南工业大学土木建筑学院建筑环境与能源应用工程大二学生，我热爱编程，热爱互联网行业，我希望能够成为一名优秀的前端工程师，正好可以
+        通过这次0基础地学习，系统地学习前端知识~~
+        </p>
+        <h3>
+          队员介绍
+        </h3>
+        <p>
+          有时间再更新哈╭(′▽`)╭(′▽`)╯
+        </p>
+	</div>	
+</div>
+</body>
+</html>
