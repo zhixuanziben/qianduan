@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>任务29</title>
+	<style type="text/css">
+		#div1{
+			font-size: 30px;
+			font-family: "微软雅黑";
+			float: left;
+			margin-top: 20px;
+		}
+		#div2{
+			float: left;
+			padding: 20px;
+		}
+		#inp{
+			border: 2px solid gray;
+			border-radius: 7px;
+			height: 40px;
+			width: 300px;
+			font-size: 25px;
+			
+		}
+		#div3{
+			font-size: 20px;
+			color:gray;
+		}
+		#btn{
+			background-color: #0066FF;
+			color:white;
+			height: 40px;
+			width: 100px;
+			border: medium none;
+			border-radius: 5px;
+			font-size: 20px;
+			margin-top: 22px;
+		}
+	</style>
+</head>
+<body>
+<div id="div1">名称</div>
+<div id="div2">
+    <input id="inp"></input>
+    <div id="div3">必填，长度为4到16个字符</div>
+</div>
+<button id="btn">验证</button>
+<script type="text/javascript">
+	var inp=document.getElementById('inp');
+	var btn=document.getElementById('btn');
+	var div3=document.getElementById('div3')
+	btn.addEventListener('click',yanzheng,false);
+	function yanzheng(argument) {
+        var val=inp.value;
+		var len = 0;
+        for (var i = 0; i < val.length; i++) {
+            var length = val.charCodeAt(i);
+            if(length>=0&&length<=128){
+                len += 1;
+            }
+            else{
+                len += 2;
+            }
+        }
+		if (len===0) {
+			div3.innerHTML='请输入内容';
+			inp.style='border: 2px solid red;border-radius: 7px';
+			div3.style='color:red';
+		}
+		else if(len<4||len>16){
+			div3.innerHTML='字符数请控制在4-16位';
+			inp.style='border: 2px solid red;border-radius: 7px';
+			div3.style='color:red';
+		}
+		else{
+			div3.innerHTML='格式正确';
+			inp.style='border: 2px solid green;border-radius: 7px';
+			div3.style='color:green';
+		}
+	}
+</script>
+</body>
+</html>
