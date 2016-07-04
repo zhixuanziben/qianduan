@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<div class="div1">
+	<div class="div2">名称</div>
+	<div class="div3">
+		<input id="inp1"></input>
+		<p id="tishi1"></p>
+	</div>
+</div>
+<div class="div1">
+	<div class="div2">密码</div>
+	<input id="inp2" type="password"></input>
+	<p id="tishi2"></p>
+</div>
+<div class="div1">	
+	<div class="div2">密码确认</div>
+	<input id="inp3" type="password"></input>
+	<p id="tishi3"></p>
+</div>
+<div class="div1">	
+	<div class="div2">邮箱</div>
+	<input id="inp4"></input>
+	<p id="tishi4"></p>
+</div>
+<div class="div1">
+	<div class="div2">手机</div>
+	<input id="inp5"></input>
+	<p id="tishi5"></p>
+</div>
+<button id="btn">验证</button>
+<script type="text/javascript">
+	var inp1=document.getElementById('inp1');
+	var inp2=document.getElementById('inp2');
+	var inp3=document.getElementById('inp3');
+	var inp4=document.getElementById('inp4');
+	var inp5=document.getElementById('inp5');
+	var tishi1=document.getElementById('tishi1');
+	var tishi2=document.getElementById('tishi2');
+	var tishi3=document.getElementById('tishi3');
+	var tishi4=document.getElementById('tishi4');
+	var tishi5=document.getElementById('tishi5');
+	var btn=document.getElementById('btn');
+	function strLen(inp){
+		len=0;
+		var val=inp.value;
+        for (var i = 0; i < val.length; i++) {
+            var length = val.charCodeAt(i);
+            if(length>=0&&length<=128){
+                len += 1;
+            }
+            else{
+                len += 2;
+            }
+    	}
+    	return len;
+    }	
+	inp1.addEventListener('focus',function(){
+		inp1.style='border:1px solid blue;';
+		tishi1.innerHTML='请输入长度为4-16的字符';
+		tishi1.style='color:gray;';
+	},false);
+	inp1.addEventListener('blur',function(){
+		strLen(inp1);
+		if (len==0) {
+			tishi1.innerHTML='请输入内容';
+			inp1.style='border: 2px solid red;border-radius: 7px';
+			tishi1.style='color:red';
+		}
+		else if(len<4||len>16){
+			tishi1.innerHTML='字符数请控制在4-16位';
+			inp1.style='border: 2px solid red;border-radius: 7px';
+			tishi1.style='color:red';
+		}
+		else{
+			tishi1.innerHTML='格式正确';
+			inp1.style='border: 2px solid green;border-radius: 7px';
+			tishi1.style='color:green';
+		}
+	},false);
+	inp2.addEventListener('focus',function(){
+		inp2.style='border:1px solid blue;';
+		tishi2.innerHTML='请输入数字或字母为6-16的密码';
+		tishi2.style='color:gray;';
+	},false);
+	inp2.addEventListener('blur',function(){
+		if (inp2.value.length<6||inp2.value.length>16) {
+			tishi2.innerHTML='密码字符数请控制在6-16位';
+			inp2.style='border: 2px solid red;border-radius: 7px';
+			tishi2.style='color:red';
+		}
+		else{
+			tishi2.innerHTML='格式正确';
+			inp2.style='border: 2px solid green;border-radius: 7px';
+			tishi2.style='color:green';
+		}
+	},false);
+	inp3.addEventListener('focus',function(){
+		inp3.style='border:1px solid blue;';
+		tishi3.innerHTML='请再次确认密码';
+		tishi3.style='color:gray;';
+	},false);
+	inp3.addEventListener('blur',function(){
+		if (tishi2.innerHTML==='格式正确'&&inp3.value===inp2.value) {
+			tishi3.innerHTML='密码一致';
+			inp3.style='border: 2px solid green;border-radius: 7px';
+			tishi3.style='color:green';
+		}
+		else{
+			tishi3.innerHTML='两次密码输入不一致';
+			inp3.style='border: 2px solid red;border-radius: 7px';
+			tishi3.style='color:red';
+		}
+	},false);
+	inp4.addEventListener('focus',function(){
+		inp4.style='border:1px solid blue;';
+		tishi4.innerHTML='请输入邮箱';
+		tishi4.style='color:gray;';
+	},false);
+	inp4.addEventListener('blur',function(){
+		var re=/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+		if (re.test(inp4.value)){
+		    tishi4.innerHTML='邮箱格式正确';
+			inp4.style='border: 2px solid green;border-radius: 7px';
+			tishi4.style='color:green';
+		}
+		else{
+			tishi4.innerHTML='邮箱格式不正确';
+			inp4.style='border: 2px solid red;border-radius: 7px';
+			tishi4.style='color:red';
+		}
+	},false);
+	inp5.addEventListener('focus',function(){
+		inp5.style='border:1px solid blue;';
+		tishi5.innerHTML='请输入手机号';
+		tishi5.style='color:gray;';
+	},false);
+	inp5.addEventListener('blur',function(){
+		var re = /^1\d{10}$/;
+		if (re.test(inp5.value)) {
+		    tishi5.innerHTML='手机号格式正确';
+			inp5.style='border: 2px solid green;border-radius: 7px';
+			tishi5.style='color:green';
+		}
+		else{
+			tishi5.innerHTML='手机号格式不正确';
+			inp5.style='border: 2px solid red;border-radius: 7px';
+			tishi5.style='color:red';
+		}
+	},false);
+	btn.addEventListener('click',function(){
+		if (tishi1.style.color=='green'&&tishi2.style.color=='green'&&tishi3.style.color=='green'&&tishi4.style.color=='green'&&tishi5.style.color=='green') {
+			alert('格式验证成功');
+		}
+		else{
+			alert('输入有误');
+		}
+	},false);
+</script>
+</body>
+</html>
