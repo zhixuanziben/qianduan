@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title></title>
+	<style type="text/css">
+	#address{
+		display: none;
+	}
+	</style>
+</head>
+<body>
+<div id="shenfen">
+	<input name="work" type="radio" id="stu" checked="checked">在校生</input>
+	<input name="work" type="radio" id="nostu">非在校生</input>
+</div>
+<div id="school">
+	<select id="select1">
+		<option value="bz">北京</option>
+		<option value="sh">上海</option>
+		<option value="zz">郑州</option>
+	</select>
+	<select id="select2">
+		<option>北京大学</option>
+		<option>清华大学</option>
+		<option>北京邮电大学</option>
+	</select>
+</div>
+<div id="address">
+	<p>地址</p>
+	<input></input>
+</div>
+<script type="text/javascript">
+	document.getElementById('shenfen').onchange=function () {
+		if (document.getElementById('stu').checked) {
+			document.getElementById('school').style.display='block';
+			document.getElementById('address').style.display='none';
+		}
+		else{
+			document.getElementById('school').style.display='none';
+			document.getElementById('address').style.display='block';
+		}
+	}
+	var data={
+		bz:['北京大学','清华大学','北京邮电大学'],
+		sh:['上海大学','上海交通大学','复旦大学','同济大学'],
+		zz:['河南工业大学','郑州大学'],
+	}
+	document.getElementById('select1').onchange=function(){
+		var attr=document.getElementById('select1').value;
+		var keys=data[attr];
+		var inner='';
+		for (var i = 0; i < keys.length; i++) {
+			inner+='<option>'+data[attr][i]+'</option>';
+		}
+		document.getElementById('select2').innerHTML=inner;
+	}
+</script>
+</body>
+</html>
